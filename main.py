@@ -4,26 +4,27 @@ f3_sort = open('Совпадающие ссылки.txt', 'w')
 f4_sort = open('Несовпадающие ссылки.txt', 'w')
 
 for line1 in f1:
-    
+    line3 = line1.replace('!','').replace('\n','')
+    #print('line3 ', line3)
     for line2 in f2:
-        line3 = line1.replace('!','')
-        line4 = line2.replace('!','')
+        line4 = line2.replace('!','').replace('\n','')
+        #print('line4 ', line4)
         if line3 == line4:
-            f3_sort.write("%s"%(line2))
+            f3_sort.write("%s"%(line2.replace('!','')))
             break
     else:
-        f4_sort.write("%s"%(line1))
+        f4_sort.write("%s"%(line1.replace('!','')))
     f2.seek(0)
 
 for line2 in f2:
     f1.seek(0)
     for line1 in f1:
-        line3 = line1.replace('!','')
-        line4 = line2.replace('!','')
+        line3 = line1.replace('!','').replace('\n','')
+        line4 = line2.replace('!','').replace('\n','')
         if line3 == line4:
             break
     else:
-        f4_sort.write("%s"%(line2))
+        f4_sort.write("%s"%(line2.replace('!','')))
 
         
 f1.close()
